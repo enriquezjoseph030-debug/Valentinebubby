@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenn Lorain, Be My Valentine 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #ff4d88;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff66b2;
+            color: white;
+        }
+
+        #no {
+            background-color: #cccccc;
+            position: absolute;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: float 5s infinite;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-800px) rotate(-45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Jenn Lorain Caraan, will you be my Valentine? 💕</h1>
+
+<button id="yes" onclick="yesClick()">Yes 💖</button>
+<button id="no" onmouseover="moveButton()">No 😅</button>
+
+<!-- Audio -->
+<audio id="bgMusic" autoplay loop>
+    <source src="ikat_at_ako.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Yes button click
+function yesClick() {
+    document.body.innerHTML = "<h1>Yay Jenn Lorain! I love you 🥰💖</h1>";
+}
+
+// No button hover
+function moveButton() {
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 50);
+    document.getElementById("no").style.left = x + "px";
+    document.getElementById("no").style.top = y + "px";
+}
+
+// Add floating hearts
+setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.background = "red";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 500);
+</script>
+
+</body>
+</html>
